@@ -71,7 +71,7 @@
             Controls.Add(buttonDescendingOrder);
             Controls.Add(buttonBubbleSort);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Task 5";
             Load += Form1_Load;
             ResumeLayout(false);
         }
