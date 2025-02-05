@@ -36,12 +36,14 @@ namespace Task5
         }
         private void buttonBubbleSort_Click(object sender, EventArgs e)
         {
+            //Procedural Sort
             ProceduralBubbleSort(numbers);
             SetListBox(numbers);
         }
 
         private void buttonDescendingOrder_Click(object sender, EventArgs e)
         {
+            //OOP Sort
             var myAlgorithm = new MyAlgorithm();
             myAlgorithm.DescendingOrder(numbers);
             SetListBox(numbers);
