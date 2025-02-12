@@ -50,6 +50,7 @@
             buttonShowBookList.TabIndex = 4;
             buttonShowBookList.Text = "Display Books";
             buttonShowBookList.UseVisualStyleBackColor = true;
+            buttonShowBookList.Click += buttonShowBookList_Click;
             // 
             // buttonShowInfo
             // 
@@ -59,6 +60,7 @@
             buttonShowInfo.TabIndex = 3;
             buttonShowInfo.Text = "Show Info";
             buttonShowInfo.UseVisualStyleBackColor = true;
+            buttonShowInfo.Click += buttonShowInfo_Click;
             // 
             // Form1
             // 
