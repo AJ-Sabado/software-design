@@ -1,3 +1,5 @@
+using Domain.Models;
+
 namespace lab4
 {
     public partial class Form1 : Form
@@ -61,49 +63,6 @@ namespace lab4
             Book[] books = { magazine, ebook, textbook, audiobook };
             string[] results = GetAllInfo(books);
             listBoxResults.DataSource = results;
-        }
-    }
-    public class Book
-    {
-        public string? Title { get; set; }
-        public string? Author { get; set; }
-        public virtual string GetInfo()
-        {
-            return $"{Title} by {Author}";
-        }
-    }
-    public class Magazine : Book
-    {
-        public int IssueNumber { get; set; }
-        public override string GetInfo()
-        {
-            return $"{Title} - Issue {IssueNumber}";
-
-        }
-    }
-    public class Ebook : Book
-    {
-        public string? Platform { get; set; }
-        public override string GetInfo()
-        {
-            return $"{Title} by {Author} - Platform: {Platform}";
-        }
-    }
-    public class TextBook : Book
-    {
-        public string? Subject { get; set; }
-        public override string GetInfo()
-        {
-            return $"{Title} by {Author} - Subject: {Subject}";
-        }
-    }
-    public class Audiobook : Book
-    {
-        public string? Narrator { get; set; }
-        public int Duration { get; set; }
-        public override string GetInfo()
-        {
-            return $"{Title}, narrated by {Narrator} - Duration: {Duration} minutes";
         }
     }
 }
