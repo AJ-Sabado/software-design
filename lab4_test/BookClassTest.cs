@@ -3,7 +3,7 @@
 namespace lab4_test
 {
     [TestClass]
-    public sealed class Task1
+    public sealed class BookClassTest
     {
         [TestMethod]
         public void TestBookCreation()
