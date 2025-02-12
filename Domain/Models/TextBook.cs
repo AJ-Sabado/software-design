@@ -13,5 +13,10 @@ namespace Domain.Models
         {
             return $"{Title} by {Author} - Subject: {Subject}";
         }
+        public override void Validate()
+        {
+            if (string.IsNullOrEmpty(Subject))
+                throw new ArgumentNullException("Subject");
+        }
     }
 }

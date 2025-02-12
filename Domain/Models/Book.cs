@@ -14,5 +14,10 @@ namespace Domain.Models
         {
             return $"{Title} by {Author}";
         }
+        public virtual void Validate()
+        {
+            if (string.IsNullOrEmpty(Title))
+                throw new ArgumentNullException("Title");
+        }
     }
 }

@@ -3,7 +3,7 @@
 namespace lab4_test
 {
     [TestClass]
-    public sealed class BookClassTest
+    public sealed class BookClassTests
     {
         [TestMethod]
         public void TestBookCreation()
@@ -27,7 +27,6 @@ namespace lab4_test
             };
             Assert.AreEqual("Tech Weekly", magazine.Title);
             Assert.AreEqual(12, magazine.IssueNumber);
-
         }
     }
 }

@@ -8,10 +8,10 @@ namespace Domain.Models
 {
     public class Ebook : Book
     {
-        public string? Platform { get; set; }
+        public int FileSizeMB { get; set; }
         public override string GetInfo()
         {
-            return $"{Title} by {Author} - Platform: {Platform}";
+            return $"{Title} (Ebook, {FileSizeMB}MB)";
         }
     }
     

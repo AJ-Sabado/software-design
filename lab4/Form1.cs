@@ -45,7 +45,7 @@ namespace lab4
             {
                 Title = "A Feast for Crows",
                 Author = "George R. R. Martin",
-                Platform = "Kindle"
+                FileSizeMB = 9
             };
             var textbook = new TextBook()
             {

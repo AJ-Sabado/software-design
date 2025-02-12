@@ -12,7 +12,11 @@ namespace Domain.Models
         public override string GetInfo()
         {
             return $"{Title} - Issue {IssueNumber}";
-
+        }
+        public override void Validate()
+        {
+            if (IssueNumber < 0)
+                throw new ArgumentException("IssueNumber");
         }
     }
 }
