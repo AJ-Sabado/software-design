@@ -1,10 +1,9 @@
-﻿using Database.Areas.Identity.Data;
-using DomainLayer.Models;
+﻿using DomainLayer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Database.Data;
+namespace InfrastructureLayer.DataAccess;
 
 public class DatabaseContext : IdentityDbContext<DatabaseUser>
 {
@@ -23,6 +22,6 @@ public class DatabaseContext : IdentityDbContext<DatabaseUser>
         base.OnConfiguring(optionsBuilder);
     }
 
-    DbSet<Author> Authors { get; set; }
-    DbSet<Book> Books { get; set; }
+    public DbSet<Author> Authors { get; set; }
+    public DbSet<Book> Books { get; set; }
 }

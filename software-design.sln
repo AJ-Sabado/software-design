@@ -45,8 +45,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Databa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfrastructureLayer", "InfrastructureLayer\InfrastructureLayer.csproj", "{B4EF00CE-CC65-44AD-A14F-448662EB7938}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesLayer", "ServicesLayer\ServicesLayer.csproj", "{217ACE59-644E-443D-BCD2-A4F38EC3DAE5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,10 +99,6 @@ Global
 		{B4EF00CE-CC65-44AD-A14F-448662EB7938}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4EF00CE-CC65-44AD-A14F-448662EB7938}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4EF00CE-CC65-44AD-A14F-448662EB7938}.Release|Any CPU.Build.0 = Release|Any CPU
-		{217ACE59-644E-443D-BCD2-A4F38EC3DAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{217ACE59-644E-443D-BCD2-A4F38EC3DAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{217ACE59-644E-443D-BCD2-A4F38EC3DAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{217ACE59-644E-443D-BCD2-A4F38EC3DAE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,7 +116,6 @@ Global
 		{A81F7CA1-5746-4310-BECC-167F645352AE} = {FA974D49-54AF-4DE0-9562-A0D0F353108B}
 		{8E059CF7-6B8D-4445-86BE-704E4A1088D7} = {FA974D49-54AF-4DE0-9562-A0D0F353108B}
 		{B4EF00CE-CC65-44AD-A14F-448662EB7938} = {FA974D49-54AF-4DE0-9562-A0D0F353108B}
-		{217ACE59-644E-443D-BCD2-A4F38EC3DAE5} = {FA974D49-54AF-4DE0-9562-A0D0F353108B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CACC9D6-DA0E-4BAF-B290-8F083C750B50}
