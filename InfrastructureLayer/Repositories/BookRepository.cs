@@ -12,9 +12,25 @@ namespace InfrastructureLayer.Repositories
             _dbContext = dbContext;
         }
 
-        public void Add(Book book)
+        public async Task Add(Book book)
         { 
             
+        }
+
+        public async Task Update(Book book)
+        { 
+        
+        }
+
+        public async Task DeleteById(int id)
+        { 
+        
+        }
+
+        public async Task<ICollection<Book>> GetAll()
+        { 
+            var books = new List<Book>();
+            return books;
         }
     }
 }
