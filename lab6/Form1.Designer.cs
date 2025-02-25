@@ -40,6 +40,10 @@
             buttonUpdate = new Button();
             buttonDelete = new Button();
             progressBarProcess = new ProgressBar();
+            listBoxSearchResult = new ListBox();
+            buttonSearch = new Button();
+            textBoxSearchTitle = new TextBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // buttonFetchBooks
@@ -58,7 +62,7 @@
             listBoxBooks.ItemHeight = 15;
             listBoxBooks.Location = new Point(229, 52);
             listBoxBooks.Name = "listBoxBooks";
-            listBoxBooks.Size = new Size(539, 394);
+            listBoxBooks.Size = new Size(539, 184);
             listBoxBooks.TabIndex = 1;
             // 
             // textBoxAuthorName
@@ -146,11 +150,50 @@
             progressBarProcess.Size = new Size(211, 23);
             progressBarProcess.TabIndex = 11;
             // 
+            // listBoxSearchResult
+            // 
+            listBoxSearchResult.FormattingEnabled = true;
+            listBoxSearchResult.ItemHeight = 15;
+            listBoxSearchResult.Location = new Point(229, 247);
+            listBoxSearchResult.Name = "listBoxSearchResult";
+            listBoxSearchResult.Size = new Size(539, 199);
+            listBoxSearchResult.TabIndex = 12;
+            // 
+            // buttonSearch
+            // 
+            buttonSearch.Location = new Point(12, 294);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(75, 23);
+            buttonSearch.TabIndex = 13;
+            buttonSearch.Text = "Search";
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += buttonSearch_Click;
+            // 
+            // textBoxSearchTitle
+            // 
+            textBoxSearchTitle.Location = new Point(12, 265);
+            textBoxSearchTitle.Name = "textBoxSearchTitle";
+            textBoxSearchTitle.Size = new Size(211, 23);
+            textBoxSearchTitle.TabIndex = 14;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(12, 247);
+            label4.Name = "label4";
+            label4.Size = new Size(59, 15);
+            label4.TabIndex = 15;
+            label4.Text = "Book Title";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(textBoxSearchTitle);
+            Controls.Add(buttonSearch);
+            Controls.Add(listBoxSearchResult);
             Controls.Add(progressBarProcess);
             Controls.Add(buttonDelete);
             Controls.Add(buttonUpdate);
@@ -184,5 +227,9 @@
         private Button buttonUpdate;
         private Button buttonDelete;
         private ProgressBar progressBarProcess;
+        private ListBox listBoxSearchResult;
+        private Button buttonSearch;
+        private TextBox textBoxSearchTitle;
+        private Label label4;
     }
 }

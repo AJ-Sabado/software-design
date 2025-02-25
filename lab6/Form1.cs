@@ -1,6 +1,7 @@
 using DomainLayer.Models;
 using InfrastructureLayer.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace lab6
 {
@@ -18,11 +19,11 @@ namespace lab6
 
         public async Task<List<string>> GetBooksAsync()
         {
-            
+
             using (var dbContext = new DatabaseContext())
             {
                 var books = await dbContext.Books.Include(b => b.Author)
-                                                   .Select(b => $"Book Id: {b.Id}; {b.Title} by {b.Author.Name}")
+                                                   .Select(b => $"Book Id:{b.Id}; {b.Title} by {b.Author.Name}")
                                                    .ToListAsync();
                 return books;
             }
@@ -69,6 +70,19 @@ namespace lab6
             }
         }
 
+        public async Task<List<string>> GetByTitle(string bookTitle)
+        {
+            using (var dbContext = new DatabaseContext())
+            {
+                var books = await dbContext.Books
+                    .Include(b => b.Author)
+                    .Where(b => b.Title == bookTitle)
+                    .Select(b => $"Book Id:{b.Id}; {b.Title} by {b.Author.Name}")
+                    .ToListAsync();
+                return books;
+            }
+        }
+
         private async void buttonFetchBooks_Click(object sender, EventArgs e)
         {
             var books = await GetBooksAsync();
@@ -90,6 +104,12 @@ namespace lab6
         {
             int bookId = int.Parse(textBoxBookId.Text.Trim());
             await DeleteBookById(bookId);
+        }
+
+        private async void buttonSearch_Click(object sender, EventArgs e)
+        {
+            var books = await GetByTitle(textBoxSearchTitle.Text.Trim());
+            listBoxSearchResult.DataSource = books;
         }
     }
 }
