@@ -14,18 +14,35 @@ namespace lab6
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
-        public async Task<List<string>> GetBooksAsync()
+        public async Task<List<string>> GetBooksAsync(IProgress<int> progress = null)
         {
-
+            var books = new List<Book>();
+            var result = new List<string>();
             using (var dbContext = new DatabaseContext())
             {
-                var books = await dbContext.Books.Include(b => b.Author)
-                                                   .Select(b => $"Book Id:{b.Id}; {b.Title} by {b.Author.Name}")
-                                                   .ToListAsync();
-                return books;
+                var totalBooks = await dbContext.Books.CountAsync();
+                var fetchedBooks = 0;
+                var batchSize = 1;
+                for (int i = 0; i < totalBooks; i += batchSize)
+                {
+                    var batch = await dbContext.Books
+                        .Include(b => b.Author)
+                        .Skip(i)
+                        .Take(batchSize)
+                        .ToListAsync();
+                    books.AddRange(batch);
+                    fetchedBooks += batch.Count();
+
+                    var percentage = (fetchedBooks * 100) / totalBooks;
+                    progress.Report(percentage);
+                }
+                foreach (var book in books)
+                {
+                    result.Add($"Id: {book.Id}; {book.Title} by {book.Author.Name}");
+                }
+                return result;
             }
         }
 
@@ -85,8 +102,14 @@ namespace lab6
 
         private async void buttonFetchBooks_Click(object sender, EventArgs e)
         {
-            var books = await GetBooksAsync();
+            var progress = new Progress<int>(ReportProcessProgress);
+            var books = await GetBooksAsync(progress);
             listBoxBooks.DataSource = books;
+        }
+
+        private void ReportProcessProgress(int percentage)
+        {
+            progressBarProcess.Value = percentage;
         }
 
         private async void buttonAddBook_Click(object sender, EventArgs e)
