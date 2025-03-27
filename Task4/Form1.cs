@@ -21,9 +21,19 @@ namespace Task4
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
+            var algo = new MyAlgorithm();
             int[] numbers = { 3, 1, 5, 2, 4 };
-            int[] sortedNumbers = ProceduralSort(numbers);
+            int[] sortedNumbers = algo.OOPSort(numbers);
             listBoxResults.DataSource = sortedNumbers;
+        }
+    }
+
+    class MyAlgorithm
+    {
+        public int[] OOPSort(int[] numbers)
+        {
+            Array.Sort(numbers);
+            return numbers;
         }
     }
 }
