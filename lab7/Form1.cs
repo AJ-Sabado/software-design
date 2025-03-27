@@ -50,6 +50,31 @@ namespace lab7
             }
         }
 
+        private async void buttonNext_Click(object sender, EventArgs e)
+        {
+            currentPage++;
+            var books = await GetBooksByPage(currentPage);
+            if (books.Count() != 0)
+            {
+                UpdateDisplay(books, currentPage);
+            }
+            else
+            {
+                MessageBox.Show("Last page reached!");
+                currentPage--;
+            }
+        }
+
+        private async void buttonPrev_Click(object sender, EventArgs e)
+        {
+            if (currentPage == 1)
+                return;
+
+            currentPage--;
+            var books = await GetBooksByPage(currentPage);
+            UpdateDisplay(books, currentPage);
+        }
+
         public async Task SaveBookAuthorWithHandling(string bookTitle, string authorName)
         {
             try
@@ -113,62 +138,6 @@ namespace lab7
                 }
             }
         }
-
-        private async Task ImportBooksAsync(List<Book> books)
-        {
-            using (var context = new Context())
-            {
-                try
-                { 
-                    foreach (var book in books)
-                    {
-                        await context.Authors.AddAsync(book.Author);
-                        await context.Books.AddAsync(book);
-                        await context.SaveChangesAsync();
-                    }
-                    MessageBox.Show("Books imported successfuly!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occured: {ex.Message}");
-                }
-            }
-        }
-
-        private async void buttonPrev_Click(object sender, EventArgs e)
-        {
-            if (currentPage == 1)
-                return;
-
-            currentPage--;
-            var books = await GetBooksByPage(currentPage);
-            UpdateDisplay(books, currentPage);
-        }
-
-        private async void buttonNext_Click(object sender, EventArgs e)
-        {
-            currentPage++;
-            var books = await GetBooksByPage(currentPage);
-            if (books.Count() != 0)
-            {
-                UpdateDisplay(books, currentPage);
-            }
-            else
-            {
-                MessageBox.Show("Last page reached!");
-                currentPage--;
-            }
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            if (!Adding)
-            {
-                var addBookForm = new AddBookForm(this);
-                addBookForm.Show();
-            }
-        }
-
         private async void buttonExport_Click(object sender, EventArgs e)
         {
             var saveFileDialog = new SaveFileDialog()
@@ -184,6 +153,19 @@ namespace lab7
                 MessageBox.Show("Books exported successfuly!");
             }
         }
+
+        
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            if (!Adding)
+            {
+                var addBookForm = new AddBookForm(this);
+                addBookForm.Show();
+            }
+        }
+
+        
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
@@ -221,6 +203,27 @@ namespace lab7
                         books.Add(newBook);
                     }
                     await ImportBooksAsync(books);
+                }
+            }
+        }
+
+        private async Task ImportBooksAsync(List<Book> books)
+        {
+            using (var context = new Context())
+            {
+                try
+                {
+                    foreach (var book in books)
+                    {
+                        await context.Authors.AddAsync(book.Author);
+                        await context.Books.AddAsync(book);
+                        await context.SaveChangesAsync();
+                    }
+                    MessageBox.Show("Books imported successfuly!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occured: {ex.Message}");
                 }
             }
         }
