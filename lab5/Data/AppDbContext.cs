@@ -5,7 +5,7 @@ using Domain.Models;
 
 namespace lab5.Data;
 
-public class AppDbContext : IdentityDbContext<AppUser>
+public class AppDbContext : DbContext
 {
     public AppDbContext()
     {
@@ -16,7 +16,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BookStoreDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BookStoreDbLab5;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
         base.OnConfiguring(optionsBuilder);
     }
 }
